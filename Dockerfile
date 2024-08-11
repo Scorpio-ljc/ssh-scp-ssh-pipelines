@@ -16,6 +16,10 @@ RUN apt-get update -y && \
   apt-get install -y ca-certificates openssh-client openssl sshpass
 
 COPY requirements.txt /requirements.txt
+
+RUN pip3 install -i https://pypi.tuna.tsinghua.edu.cn/simple --upgrade pip
+RUN pip3 config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
+
 RUN pip3 install -r /requirements.txt
 
 RUN mkdir -p /opt/tools
